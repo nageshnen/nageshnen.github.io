@@ -1,262 +1,134 @@
-/**
-* Template Name: iPortfolio
-* Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
+/* Sainagesh Veeravalli — Portfolio main script */
+(function () {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+  document.addEventListener("DOMContentLoaded", function () {
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
+    /* Sticky header shadow/background on scroll */
+    var header = document.getElementById("header");
+    var progressBar = document.getElementById("scroll-progress");
+    function onScroll() {
+      if (header) {
+        if (window.scrollY > 12) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+
+      var backToTop = document.querySelector(".back-to-top");
+      if (backToTop) {
+        if (window.scrollY > 400) backToTop.classList.add("show");
+        else backToTop.classList.remove("show");
+      }
+
+      if (progressBar) {
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        progressBar.style.width = pct + "%";
       }
     }
-  }
+    window.addEventListener("scroll", onScroll);
+    onScroll();
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Hero type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
-  }
-
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+    /* Mobile nav toggle */
+    var toggle = document.querySelector(".mobile-nav-toggle");
+    var navbar = document.getElementById("navbar");
+    if (toggle && navbar) {
+      toggle.addEventListener("click", function () {
+        navbar.classList.toggle("open");
+        toggle.classList.toggle("bi-list");
+        toggle.classList.toggle("bi-x-lg");
       });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
+      navbar.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navbar.classList.remove("open");
         });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
+      });
     }
 
-  });
+    /* Active nav link based on current page */
+    var path = window.location.pathname.split("/").pop() || "index.html";
+    var isHome = path === "index.html" || path === "";
+    document.querySelectorAll("#navbar a").forEach(function (link) {
+      var href = link.getAttribute("href") || "";
+      var linkPage = href.split("#")[0] || "index.html";
+      var isHashLink = href.indexOf("#") !== -1 && linkPage === "index.html";
+      if (!isHome && linkPage === path) {
+        link.classList.add("active");
+      } else if (isHome && linkPage === "index.html" && !isHashLink) {
+        link.classList.add("active");
+      }
+    });
 
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
+    /* Scrollspy: swap Home <-> About active state as the About section enters view */
+    if (isHome) {
+      var aboutSection = document.getElementById("about");
+      var homeLink = document.querySelector('#navbar a[href="index.html"]');
+      var aboutLink = document.querySelector('#navbar a[href="index.html#about"]');
+      if (aboutSection && homeLink && aboutLink && window.IntersectionObserver) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              homeLink.classList.remove("active");
+              aboutLink.classList.add("active");
+            } else if (entry.boundingClientRect.top > 0) {
+              aboutLink.classList.remove("active");
+              homeLink.classList.add("active");
+            }
+          });
+        }, { rootMargin: "-90px 0px -70% 0px", threshold: 0 });
+        spy.observe(aboutSection);
       }
     }
+
+    /* Smooth scroll for in-page anchors */
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var id = link.getAttribute("href");
+        if (id.length > 1) {
+          var target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (target.hasAttribute("tabindex")) {
+              target.focus({ preventScroll: true });
+            }
+          }
+        }
+      });
+    });
+
+    /* AOS init */
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 600,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 40
+      });
+    }
+
+    /* Animated skill bars (resume page) */
+    var skillFills = document.querySelectorAll(".skillbar-fill");
+    if (skillFills.length) {
+      if (window.IntersectionObserver) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              el.style.width = (el.getAttribute("data-percent") || 0) + "%";
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.4 });
+        skillFills.forEach(function (el) { observer.observe(el); });
+      } else {
+        skillFills.forEach(function (el) {
+          el.style.width = (el.getAttribute("data-percent") || 0) + "%";
+        });
+      }
+    }
+
   });
-
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
-
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
-
-})()
+})();
