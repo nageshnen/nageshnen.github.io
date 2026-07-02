@@ -1,0 +1,12 @@
+# IDE / local tool directories (.git itself is always ignored by git)
+.idea/
+.claude/
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies
+node_modules/
