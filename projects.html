@@ -89,9 +89,17 @@
     <!-- ======= Project grid ======= -->
     <section id="projects-grid">
       <div class="container">
+        <div class="filter-bar" data-aos="fade-up" role="group" aria-label="Filter projects by category">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="machine-learning" aria-pressed="false">Machine Learning</button>
+          <button class="filter-btn" data-filter="computer-vision" aria-pressed="false">Computer Vision</button>
+          <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+          <button class="filter-btn" data-filter="research" aria-pressed="false">Research</button>
+        </div>
+
         <div class="project-grid">
 
-          <div class="project-card" data-aos="fade-up" tabindex="0" role="button" aria-label="Gated Recurrent Unit project, flip for details">
+          <div class="project-card" data-category="machine-learning" data-aos="fade-up" tabindex="0" role="button" aria-label="Gated Recurrent Unit project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
@@ -118,7 +126,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="3D Object Detection project, flip for details">
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="3D Object Detection project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
@@ -145,7 +153,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Video Sentiment Analysis project, flip for details">
+          <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Video Sentiment Analysis project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
@@ -172,7 +180,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" tabindex="0" role="button" aria-label="Image Search Engine project, flip for details">
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up" tabindex="0" role="button" aria-label="Image Search Engine project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb no-image">
@@ -199,7 +207,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Live Object Detection project, flip for details">
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Live Object Detection project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
@@ -226,7 +234,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Qiskit quantum computing project, flip for details">
+          <div class="project-card" data-category="research" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Qiskit quantum computing project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
@@ -252,7 +260,7 @@
             </div>
           </div>
 
-          <div class="project-card" data-aos="fade-up" tabindex="0" role="button" aria-label="A5Cinemas web project, flip for details">
+          <div class="project-card" data-category="web" data-aos="fade-up" tabindex="0" role="button" aria-label="A5Cinemas web project, flip for details">
             <div class="flip-inner">
               <div class="flip-front">
                 <div class="project-thumb">
