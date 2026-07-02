@@ -109,6 +109,46 @@
       });
     }
 
+    /* Project category filter (projects page) */
+    var filterBar = document.querySelector(".filter-bar");
+    if (filterBar) {
+      var filterBtns = filterBar.querySelectorAll(".filter-btn");
+      var filterCards = document.querySelectorAll(".project-grid .project-card");
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach(function (b) {
+            b.classList.toggle("active", b === btn);
+            b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+          });
+          var filter = btn.getAttribute("data-filter");
+          filterCards.forEach(function (card) {
+            var match = filter === "all" || card.getAttribute("data-category") === filter;
+            if (match) {
+              card.classList.remove("filtered-hidden");
+              /* double rAF: let display:none clear before animating back in */
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                  card.classList.remove("filtered-out");
+                });
+              });
+            } else {
+              card.classList.add("filtered-out");
+              setTimeout(function () {
+                if (card.classList.contains("filtered-out")) {
+                  card.classList.add("filtered-hidden");
+                }
+              }, 300);
+            }
+          });
+          /* grid reflow moves cards into view without a scroll event, so
+             AOS-revealed cards would stay invisible — recalc after settle */
+          setTimeout(function () {
+            if (window.AOS) window.AOS.refresh();
+          }, 340);
+        });
+      });
+    }
+
     /* Animated skill bars (resume page) */
     var skillFills = document.querySelectorAll(".skillbar-fill");
     if (skillFills.length) {

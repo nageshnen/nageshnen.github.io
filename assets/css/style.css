@@ -854,6 +854,41 @@ section { padding: 96px 0; }
 }
 
 /* ==========================================================================
+   Project filter bar
+   ========================================================================== */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  padding: 9px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-2);
+  transform: translateY(-1px);
+}
+.filter-btn.active {
+  background: var(--grad);
+  border-color: transparent;
+  color: #140804;
+  box-shadow: 0 8px 20px -8px rgba(255, 61, 36, 0.5);
+}
+
+/* ==========================================================================
    Project cards
    ========================================================================== */
 
@@ -873,7 +908,15 @@ section { padding: 96px 0; }
   min-height: 430px;
   border-radius: var(--radius);
   cursor: pointer;
+  transition: opacity .3s ease, transform .3s ease;
 }
+/* Category filter states (see main.js): fade/scale out, then collapse */
+.project-card.filtered-out {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+.project-card.filtered-hidden { display: none; }
 .project-card:focus-visible { outline: none; }
 .project-card:focus-visible .flip-inner { box-shadow: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent); border-radius: var(--radius); }
 
