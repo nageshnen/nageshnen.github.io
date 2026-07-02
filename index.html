@@ -15,11 +15,15 @@
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <meta name="theme-color" content="#0a0807">
+  <meta name="color-scheme" content="dark">
+  <!-- Paint dark immediately so cross-page transitions never flash white -->
+  <style>html { background-color: #0a0807; }</style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -32,6 +36,17 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Page transition veil (3D louver slats; entry reveal is pure CSS) -->
+  <div class="page-veil" aria-hidden="true">
+    <div class="veil-slat"></div>
+    <div class="veil-slat"></div>
+    <div class="veil-slat"></div>
+    <div class="veil-slat"></div>
+    <div class="veil-slat"></div>
+    <div class="veil-brand">SV<span>&#8226;</span></div>
+  </div>
+
   <div class="scroll-progress" id="scroll-progress"></div>
 
   <!-- ======= Header ======= -->
@@ -71,6 +86,7 @@
     <section id="hero">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="container">
+        <div class="hero-eyebrow" data-aos="fade-up"><span class="dot"></span> Senior Software Engineer &middot; Atlanta</div>
         <h1 data-aos="fade-up">Hi, I'm Sainagesh —<br><span>Software Engineer.</span></h1>
         <p class="lead" data-aos="fade-up" data-aos-delay="100">
           Senior Software Engineer at The Home Depot, building intelligent, data-driven systems across cloud platforms,
@@ -111,6 +127,18 @@
         <span class="chevron"></span>
       </a>
     </section>
+
+    <!-- ======= Skills marquee ======= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span class="word">Python</span><span class="spark">&#10022;</span><span class="word">Machine Learning</span><span class="spark">&#10022;</span><span class="word">TensorFlow</span><span class="spark">&#10022;</span><span class="word">PyTorch</span><span class="spark">&#10022;</span><span class="word">Computer Vision</span><span class="spark">&#10022;</span><span class="word">GCP</span><span class="spark">&#10022;</span><span class="word">AWS</span><span class="spark">&#10022;</span><span class="word">Full-Stack</span><span class="spark">&#10022;</span><span class="word">Agentic AI</span><span class="spark">&#10022;</span><span class="word">Docker</span><span class="spark">&#10022;</span><span class="word">Tableau</span><span class="spark">&#10022;</span>
+        </div>
+        <div class="marquee-item">
+          <span class="word">Python</span><span class="spark">&#10022;</span><span class="word">Machine Learning</span><span class="spark">&#10022;</span><span class="word">TensorFlow</span><span class="spark">&#10022;</span><span class="word">PyTorch</span><span class="spark">&#10022;</span><span class="word">Computer Vision</span><span class="spark">&#10022;</span><span class="word">GCP</span><span class="spark">&#10022;</span><span class="word">AWS</span><span class="spark">&#10022;</span><span class="word">Full-Stack</span><span class="spark">&#10022;</span><span class="word">Agentic AI</span><span class="spark">&#10022;</span><span class="word">Docker</span><span class="spark">&#10022;</span><span class="word">Tableau</span><span class="spark">&#10022;</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ======= About ======= -->
     <section id="about">
@@ -341,6 +369,7 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="assets/js/hero-scene.js"></script>
+  <script src="assets/js/transitions.js"></script>
   <script src="assets/js/effects.js"></script>
   <script src="assets/js/main.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
