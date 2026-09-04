@@ -10,10 +10,8 @@
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <meta name="theme-color" content="#0a0807">
-  <meta name="color-scheme" content="dark">
-  <!-- Paint dark immediately so cross-page transitions never flash white -->
-  <style>html { background-color: #0a0807; }</style>
+  <meta name="theme-color" content="#fbfbfd">
+  <meta name="color-scheme" content="light">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,16 +29,6 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
-
-  <!-- Page transition veil (3D louver slats; entry reveal is pure CSS) -->
-  <div class="page-veil" aria-hidden="true">
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-brand">SV<span>&#8226;</span></div>
-  </div>
 
   <div class="scroll-progress" id="scroll-progress"></div>
 
@@ -79,10 +67,10 @@
 
     <!-- ======= Page header ======= -->
     <section class="page-header">
-      <div class="container" data-aos="zoom-in">
+      <div class="container" data-aos="fade-up">
         <span class="eyebrow">Projects</span>
         <h1>Things I've built</h1>
-        <p>A mix of machine learning, computer vision, research, and full-stack projects — most with code on GitHub. Click any card to flip it and see the details.</p>
+        <p>A mix of machine learning, computer vision, research, and full-stack projects — most with code on GitHub.</p>
       </div>
     </section>
 
@@ -99,189 +87,126 @@
 
         <div class="project-grid">
 
-          <div class="project-card" data-category="machine-learning" data-aos="fade-up" tabindex="0" role="button" aria-label="Gated Recurrent Unit project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Machine Learning</span>
-                  <img src="assets/img/portfolio/gru.png" alt="Gated Recurrent Unit project">
-                </div>
-                <div class="project-body">
-                  <h4>Gated Recurrent Unit (GRU)</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="machine-learning" data-aos="fade-up">
+            <div class="project-thumb">
+              <span class="project-category">Machine Learning</span>
+              <img src="assets/img/portfolio/gru.png" alt="Gated Recurrent Unit project">
+            </div>
+            <div class="project-body">
+              <h4>Gated Recurrent Unit (GRU)</h4>
+              <p>Implemented a GRU model from scratch — input, hidden, and output layers, plus forward and backward
+                passes — trained with RMSProp/Adam and validated on a lake-level time-series dataset.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">Scala</span><span class="tag">Deep Learning</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Machine Learning</span>
-                <h4>Gated Recurrent Unit (GRU)</h4>
-                <p>Implemented a GRU model from scratch — input, hidden, and output layers, plus forward and backward
-                  passes — trained with RMSProp/Adam and validated on a lake-level time-series dataset.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Python</span><span class="tag">Scala</span><span class="tag">Deep Learning</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/GRU" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/GRU" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="3D Object Detection project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Computer Vision</span>
-                  <img src="assets/img/portfolio/objdet_3d.png" alt="3D Object Detection project">
-                </div>
-                <div class="project-body">
-                  <h4>3-D Object Detection &amp; Identification</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-thumb">
+              <span class="project-category">Computer Vision</span>
+              <img src="assets/img/portfolio/objdet_3d.png" alt="3D Object Detection project">
+            </div>
+            <div class="project-body">
+              <h4>3-D Object Detection &amp; Identification</h4>
+              <p>Aligned high-resolution LiDAR point clouds with KITTI camera images and used Frustum PointNet/CloudNet
+                to extract features and detect objects within regions of interest.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">PointNet</span><span class="tag">LiDAR</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Computer Vision</span>
-                <h4>3-D Object Detection &amp; Identification</h4>
-                <p>Aligned high-resolution LiDAR point clouds with KITTI camera images and used Frustum PointNet/CloudNet
-                  to extract features and detect objects within regions of interest.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Python</span><span class="tag">PointNet</span><span class="tag">LiDAR</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/3d_objdet" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/3d_objdet" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Video Sentiment Analysis project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Machine Learning</span>
-                  <img src="assets/img/portfolio/vidsentan.png" alt="Video Sentiment Analysis project">
-                </div>
-                <div class="project-body">
-                  <h4>Video Sentiment Analysis</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="machine-learning" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-thumb">
+              <span class="project-category">Machine Learning</span>
+              <img src="assets/img/portfolio/vidsentan.png" alt="Video Sentiment Analysis project">
+            </div>
+            <div class="project-body">
+              <h4>Video Sentiment Analysis</h4>
+              <p>Led a team of 5 building a sentiment-detection pipeline with DeepFace and FER models to decode
+                emotion from video content and understand user engagement.</p>
+              <div class="tag-row">
+                <span class="tag">DeepFace</span><span class="tag">FER</span><span class="tag">MLflow</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Machine Learning</span>
-                <h4>Video Sentiment Analysis</h4>
-                <p>Led a team of 5 building a sentiment-detection pipeline with DeepFace and FER models to decode
-                  emotion from video content and understand user engagement.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">DeepFace</span><span class="tag">FER</span><span class="tag">MLflow</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/vidsentan" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/vidsentan" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="computer-vision" data-aos="fade-up" tabindex="0" role="button" aria-label="Image Search Engine project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb no-image">
-                  <span class="project-category">Computer Vision</span>
-                  <i class="bi bi-search"></i>
-                </div>
-                <div class="project-body">
-                  <h4>Image Search Engine</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up">
+            <div class="project-thumb no-image">
+              <span class="project-category">Computer Vision</span>
+              <i class="bi bi-search"></i>
+            </div>
+            <div class="project-body">
+              <h4>Image Search Engine</h4>
+              <p>Built a content-based image retrieval (CBIR) engine combining color histograms and texture
+                descriptors, with a background-aware retrieval method that improved search precision.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">CBIR</span><span class="tag">Computer Vision</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Computer Vision</span>
-                <h4>Image Search Engine</h4>
-                <p>Built a content-based image retrieval (CBIR) engine combining color histograms and texture
-                  descriptors, with a background-aware retrieval method that improved search precision.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Python</span><span class="tag">CBIR</span><span class="tag">Computer Vision</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/imagesearch" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/imagesearch" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Live Object Detection project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Computer Vision</span>
-                  <img src="assets/img/portfolio/live_objdet.png" alt="Live Object Detection project">
-                </div>
-                <div class="project-body">
-                  <h4>Live Object Detection</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="computer-vision" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-thumb">
+              <span class="project-category">Computer Vision</span>
+              <img src="assets/img/portfolio/live_objdet.png" alt="Live Object Detection project">
+            </div>
+            <div class="project-body">
+              <h4>Live Object Detection</h4>
+              <p>Real-time object detection pipeline for live video streams, built for fast inference on
+                consumer-grade hardware.</p>
+              <div class="tag-row">
+                <span class="tag">Computer Vision</span><span class="tag">YOLO</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Computer Vision</span>
-                <h4>Live Object Detection</h4>
-                <p>Real-time object detection pipeline for live video streams, built for fast inference on
-                  consumer-grade hardware.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Computer Vision</span><span class="tag">YOLO</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/live-obj-det" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/live-obj-det" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="research" data-aos="fade-up" data-aos-delay="200" tabindex="0" role="button" aria-label="Qiskit quantum computing project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Research</span>
-                  <img src="assets/img/portfolio/qiskit.png" alt="Qiskit quantum computing project">
-                </div>
-                <div class="project-body">
-                  <h4>Qiskit</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="research" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-thumb">
+              <span class="project-category">Research</span>
+              <img src="assets/img/portfolio/qiskit.png" alt="Qiskit quantum computing project">
+            </div>
+            <div class="project-body">
+              <h4>Qiskit</h4>
+              <p>Quantum computing research and experimentation built on IBM's Qiskit framework.</p>
+              <div class="tag-row">
+                <span class="tag">Quantum Computing</span><span class="tag">Python</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Research</span>
-                <h4>Qiskit</h4>
-                <p>Quantum computing research and experimentation built on IBM's Qiskit framework.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Quantum Computing</span><span class="tag">Python</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/Qiskit" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/Qiskit" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
 
-          <div class="project-card" data-category="web" data-aos="fade-up" tabindex="0" role="button" aria-label="A5Cinemas web project, flip for details">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="project-thumb">
-                  <span class="project-category">Web</span>
-                  <img src="assets/img/portfolio/a5cinemas.png" alt="A5Cinemas web project">
-                </div>
-                <div class="project-body">
-                  <h4>A5Cinemas</h4>
-                  <p class="flip-hint"><i class="bi bi-arrow-repeat"></i> Flip for details</p>
-                </div>
+          <div class="project-card" data-category="web" data-aos="fade-up">
+            <div class="project-thumb">
+              <span class="project-category">Web</span>
+              <img src="assets/img/portfolio/a5cinemas.png" alt="A5Cinemas web project">
+            </div>
+            <div class="project-body">
+              <h4>A5Cinemas</h4>
+              <p>Full-stack cinema management system handling bookings, listings, and admin operations.</p>
+              <div class="tag-row">
+                <span class="tag">Full-Stack</span><span class="tag">Web</span>
               </div>
-              <div class="flip-back">
-                <span class="project-category back">Web</span>
-                <h4>A5Cinemas</h4>
-                <p>Full-stack cinema management system handling bookings, listings, and admin operations.</p>
-                <div class="tag-row" style="margin-bottom: 14px;">
-                  <span class="tag">Full-Stack</span><span class="tag">Web</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/nageshnen/A5Cinemas" target="_blank"><i class="bi bi-github"></i> View Repo</a>
-                </div>
+              <div class="project-links">
+                <a href="https://github.com/nageshnen/A5Cinemas" target="_blank"><i class="bi bi-github"></i> View Repo</a>
               </div>
             </div>
           </div>
@@ -346,7 +271,6 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/transitions.js"></script>
-  <script src="assets/js/effects.js"></script>
   <script src="assets/js/main.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 

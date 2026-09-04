@@ -10,10 +10,8 @@
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <meta name="theme-color" content="#0a0807">
-  <meta name="color-scheme" content="dark">
-  <!-- Paint dark immediately so cross-page transitions never flash white -->
-  <style>html { background-color: #0a0807; }</style>
+  <meta name="theme-color" content="#fbfbfd">
+  <meta name="color-scheme" content="light">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,16 +29,6 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
-
-  <!-- Page transition veil (3D louver slats; entry reveal is pure CSS) -->
-  <div class="page-veil" aria-hidden="true">
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-slat"></div>
-    <div class="veil-brand">SV<span>&#8226;</span></div>
-  </div>
 
   <div class="scroll-progress" id="scroll-progress"></div>
 
@@ -79,7 +67,7 @@
 
     <!-- ======= Page header ======= -->
     <section class="page-header">
-      <div class="container" data-aos="zoom-in">
+      <div class="container" data-aos="fade-up">
         <span class="eyebrow">Resume</span>
         <h1>Experience, education &amp; skills</h1>
         <p>Senior Software Engineer at The Home Depot with a Master's in Computer Science from the University of Georgia, spanning full-stack development, machine learning, and cloud data platforms.</p>
@@ -320,7 +308,6 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/transitions.js"></script>
-  <script src="assets/js/effects.js"></script>
   <script src="assets/js/main.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
