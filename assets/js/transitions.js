@@ -1,17 +1,15 @@
 /* Sainagesh Veeravalli — Portfolio
-   Cross-page 3D transition engine. The veil's entry reveal is pure CSS
-   (see .page-veil in style.css) so it works even if this script fails;
-   this file only drives the exit: intercept internal navigation, play the
-   fold-in animation, then navigate. */
+   Gentle cross-fade between pages: intercept qualifying internal navigation,
+   fade the page out, then go. Entry fade-up is pure CSS (see @keyframes pageIn
+   in style.css) so it works even if this script fails. */
 (function () {
   "use strict";
 
-  var EXIT_MS = 690; // veilClose (.45s) + longest stagger (.2s) + small buffer
+  var EXIT_MS = 200; // keep in sync with body.is-leaving transition in style.css
 
-  /* bfcache restore (back/forward): clear the exit state so the page
-     isn't stuck behind a closed veil. */
+  /* bfcache restore (back/forward): clear the leaving state */
   window.addEventListener("pageshow", function (e) {
-    if (e.persisted) document.documentElement.classList.remove("is-exiting");
+    if (e.persisted) document.body.classList.remove("is-leaving");
   });
 
   document.addEventListener("click", function (e) {
@@ -35,9 +33,8 @@
 
     e.preventDefault();
 
-    var html = document.documentElement;
-    if (html.classList.contains("is-exiting")) return;       // already leaving
-    html.classList.add("is-exiting");
+    if (document.body.classList.contains("is-leaving")) return;
+    document.body.classList.add("is-leaving");
 
     setTimeout(function () {
       window.location.href = url.href;
